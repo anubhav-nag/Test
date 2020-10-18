@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-in</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<style>
+    img{
+        width: 100%;
+        height: 100%;
+        filter: blur(10px);
+        position: absolute;
+        top: 0;
+        z-index: 0;
+    }
+
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: content-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    main{
+        justify-content: space-evenly;
+        align-items: center;
+        margin-top: 20px;
+    }
+    input[type="text"], input[type="password"]{
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        border: none;
+        border-bottom: 1.5px solid rgb(169,169,169,.4);
+        padding: 13px 3px;
+        font-family: Arial, Helvetica, sans-serif;     
+        font-size: medium;   
+    }
+    input[type="text"]:focus, input[type="password"]:focus{
+        outline-style: none;
+        border-bottom: 1.5px solid rgba(0, 38, 255, 0.849);
+    }
+    .a, .b, .c{
+        width: 350px;
+        height: 475px;
+        background-color: white;
+        border-radius: 5px;
+        position: relative;
+        margin-bottom: 25px;
+        margin-left: auto;
+        margin-right: auto;
+
+        z-index: 1;
+        top: 5.5vw;
+    }
+    
+
+    .c h2{
+        display: block;
+        width: 100%;
+        margin-top: 15px;
+        text-align: center;  
+        color: deeppink;      
+        font-size: 40px;
+    }    
+
+    .c #art1{
+        width: 80%;
+        margin:auto;
+        clear: both;
+    }
+    .c #art1 a{
+        text-decoration: none;
+        font-size: 14px;
+        color: rgb(42, 185, 233);
+        float: right;
+    }
+    .c #signin{
+        display: block;
+        width: 80%;
+        margin: 0 auto;
+        background: linear-gradient(to right, rgb(163, 224, 245) 0%, rgb(83, 83, 224) 100%);
+        border-radius: 20px;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        color: white;
+        box-shadow: 0 2px rgba(0,0,0,.2);
+        margin-bottom: 15px;
+    }
+    .c #art2{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 20%;
+        justify-content: space-evenly;
+        text-align: center;
+    }
+    .c #art2 i{
+        display: inline-block;
+        margin: 10px 20px;
+        padding: 5px 10px;
+        font-size: 20px;
+        color: rgb(20, 139, 212);
+        border: 1px solid rgb(242,237,255);
+        border-top: none;
+        border-radius: 15px;
+        box-shadow: 0 2px rgba(0,0,0,.1);
+        width: 50px;
+    }
+
+    header{
+        font-size: 3.5vw;
+        text-align: center;
+        color: red;
+        font-weight: 600;
+        margin: 20px 0 50px 0;
+    }
+    .ph{
+        position: relative;
+        width: 80%;
+        margin: 0 auto;
+    }
+    .sp{
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    input:focus + .sp, input:not(:placeholder-shown) + .sp {
+        transform:  translateY(-92%) translateX(2px);
+        font-size: 12px;
+        font-weight: 600;
+        color: rgba(0, 38, 255, 0.849);
+        margin-top: 5px;
+        transition: .4s;
+    }
+    #signup{
+        text-decoration: none;
+        font-size: small;
+        color:  rgb(83, 83, 224,.8);
+        margin-left: 140px;
+    }
+</style>
+<body>
+    <section class="main">
+        <img src="https://github.com/0124hitesh/Test/blob/master/images/Screenshot%20(204).png?raw=true" alt="">
+
+        <section class="c">
+            <h2 style="color: black;">Sign in</h2>
+            <br><br><br>
+            <article class="ph">
+                <input type="text" placeholder=" " id="yname">
+                <span class="sp">Your email</span>
+            </article>
+                <br>
+            <article class="ph">
+                <input type="password" placeholder=" ">
+                <span class="sp">Your password</span>
+            </article>
+            <br>
+            <article id="art1">
+                <a href="#">Forgot Password?</a>
+            </article>
+            <br><br><br>
+
+            <a href="#" id="signin">Sign in</a>
+            <a href="sign_up.html" id="signup"><b>or SIGN UP</b></a>
+
+            <article id="art2">
+                <p>Contact Us:</p>
+                <br>
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-google-plus"></i></a>
+            </article>
+        </section>
+    </section>
+</body>
+</html>
