@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const server = express();
 var bodyParser = require('body-parser');
+var nunjucks = require('nunjucks');
  
 server.use(bodyParser.urlencoded({
     extended: true
@@ -16,7 +17,10 @@ server.use(express.urlencoded());
 server.set('views', path.join(__dirname, '../templates')); 
 
 // settings to render html templates
-server.engine('html', require('swig').renderFile);
+nunjucks.configure('templates', {
+  express: server,
+  autoescape: true
+});
 server.set('view engine', 'html');
 
 
