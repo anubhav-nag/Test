@@ -23,12 +23,14 @@ nunjucks.configure('templates', {
 });
 server.set('view engine', 'html');
 
-
+// only to check server is working or not
 server.get('/trifle', (req, res) => { 
     res.status(200).json({message:"its working"})
 });
 
-server.use('/',require('./home'));
+
+//routes for pages
+server.use('/',require('./home')); // ./home ==> home.js
 server.use('/about',require('./about'));
 server.use('/contact',require('./contact'));
 
