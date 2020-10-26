@@ -35,5 +35,7 @@ server.use('/about',require('./about'));
 server.use('/contact',require('./contact'));
 server.use('/shop',require('./shop'));
 server.use('/cart',require('./cart'));
+server.use('/signin',require('./sign_in'));
+server.use('/signup',require('./sign_up'));
 
 module.exports = server;
