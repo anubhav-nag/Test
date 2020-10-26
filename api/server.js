@@ -33,5 +33,7 @@ server.get('/trifle', (req, res) => {
 server.use('/',require('./home')); // ./home ==> home.js
 server.use('/about',require('./about'));
 server.use('/contact',require('./contact'));
+server.use('/shop',require('./shop'));
+server.use('/cart',require('./cart'));
 
 module.exports = server;
