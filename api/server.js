@@ -1,8 +1,8 @@
 const express = require('express');
 const path = require('path');
 const server = express();
-var bodyParser = require('body-parser');
-var nunjucks = require('nunjucks');
+const bodyParser = require('body-parser');
+const nunjucks = require('nunjucks');
  
 server.use(bodyParser.urlencoded({
     extended: true
@@ -24,8 +24,12 @@ nunjucks.configure('templates', {
 server.set('view engine', 'html');
 
 
-server.get('/', (req, res) => { 
-    res.status(200).render('index.html')
+server.get('/trifle', (req, res) => { 
+    res.status(200).json({message:"its working"})
 });
+
+server.use('/',require('./home'));
+server.use('/about',require('./about'));
+server.use('/contact',require('./contact'));
 
 module.exports = server;
