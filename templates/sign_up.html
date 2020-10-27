@@ -29,7 +29,7 @@
         align-items: center;
         margin-top: 20px;
     }
-    input[type="text"], input[type="password"]{
+    input[type="text"], input[type="password"], input[type="email"]{
         display: block;
         margin: 0 auto;
         width: 100%;
@@ -37,15 +37,13 @@
         border-bottom: 1.5px solid rgb(169,169,169,.4);
         padding: 13px 3px;
         font-family: Arial, Helvetica, sans-serif;     
-        font-size: medium;   
-    }
-    input[type="text"]:focus, input[type="password"]:focus{
-        outline-style: none;
+		font-size: medium;   
+		outline-style: none;
         border-bottom: 1.5px solid rgba(0, 38, 255, 0.849);
     }
     .b{
-        width: 350px;
-        height: 475px;
+        width: 450px;
+        height: 525px;
         background-color: white;
         border-radius: 5px;
         position: relative;
@@ -57,37 +55,37 @@
         top: 5.5vw;
     }
 
-    .b h2, .c h2{
+    .b h2{
         display: block;
         width: 100%;
-        margin-top: 15px;
+        padding-top: 15px;
         text-align: center;  
         color: deeppink;      
         font-size: 40px;
     }    
     .b #art1{
-        width: 80%;
+        width: 85%;
         margin: 0 auto;
-        font-size: 12px;
     }
     .b #art1 a{
         color: rgb(42, 185, 233);
         text-decoration: none;
-        font-size: 12px;
     }
-    .b #signup{
+    .b #sign_up{
         display: block;
         float: left;
-        text-decoration: none;
         padding: 8px 13px;
         background-color: deeppink;
-        margin-left: 10%;
+		margin-left: 7%;
+		border: 0;
         border-radius: 18px;
-        color: white;
-        font-weight: 500;
-        margin-right: 15px;
+		color: white;
+		font-size: 15px;
+        font-weight: 600;
+		margin-right: 15px;
+		outline: none;
         box-shadow: 0 2px rgba(0,0,0,.2);
-    }
+    } 
     .b p{
         padding: 8px;
         font-size: 15px;
@@ -113,14 +111,6 @@
         font-size: 25px;
         color: white;
     }
-
-    header{
-        font-size: 3.5vw;
-        text-align: center;
-        color: red;
-        font-weight: 600;
-        margin: 20px 0 50px 0;
-    }
     .ph{
         position: relative;
         width: 80%;
@@ -131,52 +121,87 @@
         top: 0;
         left: 0;
     }
-    input:focus + .sp, input:not(:placeholder-shown) + .sp {
+    /* input:focus + .sp, input:not(:placeholder-shown) + .sp {
         transform:  translateY(-92%) translateX(2px);
         font-size: 12px;
         font-weight: 600;
         color: rgba(0, 38, 255, 0.849);
         margin-top: 5px;
         transition: .4s;
-    }
-    #signup{
-        text-decoration: none;
-        font-size: small;
-        color:  rgb(83, 83, 224,.8);
-        margin-left: 140px;
-    }
+    } */
+	
+	#name{
+		width: 90%;
+		margin: 0 auto;
+		display: flex;
+		justify-content:space-evenly;
+	}
+	#name .name{
+		width: 45%;
+	}
+	#email, #password{
+		width: 85%;
+	}
+	#lb{ 	display: none;}
+
+	@media (max-width: 475px){
+		.b{
+			height: 600px;
+		}
+		#name{
+			display: unset;
+		}
+		#name .name{
+		width: 85%;
+		}
+		#lb{	display: unset;	}
+	}
 </style>
 <body>
     <section class="main">
         <img src="../static/images/Screenshot (204).png" alt="">
 
         <section class="b">
-            <h2>Sign up</h2>
-            <br><br><br>
-            <article class="ph">
-                <input type="text" placeholder=" " id="yname">
-                <span class="sp">Your email</span>
-            </article>
-                <br>
-            <article class="ph">
-                <input type="password" placeholder=" ">
-                <span class="sp">Your password</span>
-            </article>
-            <br>
+			<h2>Sign up</h2>
+			<br><br><br>
+            <form action="">
+                
+               <article id="name">
+				   <input type="text" id="first_name" class="name" name="first_name" placeholder="First Name" required
+				   pattern="[A-Z][A-Z a-z 0-9]{0,19}"
+				   title="Name should be consists of 1-20 alphabets and first alphabet should be capital.">
 
-            <article id="art1">
-                <input type="checkbox" name="" id="">&nbsp &nbsp Accept the <a href="">Terms and Conditions</a>
-            </article>
+				   <p id="lb"></p>
 
-            <br><br><br>
-            <a href="#" id="signup">Sign up</a>
-            <p>Have an account? <a href="sign_in.html">Sign in</a></p>
+				   <input type="text" id="last_name" class="name" name="last_name" placeholder="Last Name" required>
+			   </article>
+
+			   <br>
+			   <input type="email" id="email" name="email" placeholder="Email" required>
+
+			   <br>
+			   <input type="password" name="password" id="password" name="password" placeholder="Password" required
+			   pattern="[\\w \\W]{6,20}"
+			   title="Min alphabet should be 6">
+
+			   <br>
+			   <article id="art1">
+               		<input type="checkbox" name="" id=""><span style="font-size: 14px;">&nbsp &nbsp Accept the <a href="">Terms and Conditions</a></span>
+               </article>
+
+				<br><br>
+				<article style="width: 90%; display: flex; justify-content: left;">
+					<button type="submit" id="sign_up">Sign Up</button>
+					<p>Have an account? &nbsp<a href="sign_in.html" style="font-weight: 500;">Sign in</a></p>
+				</article>
+			</form>
 
             <article id="art2">
                 <a href="#"><i class="fa fa-facebook"></i></a>
                 <a href="#"><i class="fa fa-twitter"></i></a>
                 <a href="#"><i class="fa fa-google-plus"></i></a>
-            </article>
+			</article>
+			
         </section>
     </section>
 </body>
