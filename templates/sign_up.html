@@ -168,12 +168,12 @@
 </style>
 <body>
     <section class="main">
-        <img src="../static/images/Screenshot (204).png" alt="">
+        <img src="/static/images/Screenshot (204).png" alt="">
 
         <section class="b">
 			<h2>Sign up</h2>
 			<br><br><br>
-            <form action="">
+            <form action="/signup" method="POST">
                 
                <article id="name">
 				   <input type="text" id="first_name" class="name" name="first_name" placeholder="First Name" required
@@ -190,7 +190,7 @@
 
 			   <br>
 			   <input type="password" name="password" id="password" name="password" placeholder="Password" required
-			   pattern="[\\w \\W]{6,20}"
+			   
 			   title="Min alphabet should be 6">
 
 			   <br>

@@ -1,7 +1,8 @@
 const express = require('express');
 const path = require('path');
 const server = express();
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
+const nunjucks = require('nunjucks');
  
 server.use(bodyParser.urlencoded({
     extended: true
@@ -16,12 +17,25 @@ server.use(express.urlencoded());
 server.set('views', path.join(__dirname, '../templates')); 
 
 // settings to render html templates
-server.engine('html', require('swig').renderFile);
+nunjucks.configure('templates', {
+  express: server,
+  autoescape: true
+});
 server.set('view engine', 'html');
 
-
-server.get('/', (req, res) => { 
-    res.status(200).render('index.html')
+// only to check server is working or not
+server.get('/trifle', (req, res) => { 
+    res.status(200).json({message:"its working"})
 });
+
+
+//routes for pages
+server.use('/',require('./home')); // ./home ==> home.js
+server.use('/about',require('./about'));
+server.use('/contact',require('./contact'));
+server.use('/shop',require('./shop'));
+server.use('/cart',require('./cart'));
+server.use('/signin',require('./sign_in'));
+server.use('/signup',require('./sign_up'));
 
 module.exports = server;
