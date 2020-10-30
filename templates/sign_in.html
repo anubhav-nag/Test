@@ -90,6 +90,7 @@
         color: white;
         box-shadow: 0 2px rgba(0,0,0,.2);
         margin-bottom: 15px;
+        border: 0;
     }
     .c #art2{
         position: absolute;
@@ -151,23 +152,26 @@
         <section class="c">
             <h2 style="color: black;">Sign in</h2>
             <br><br><br>
-            <article class="ph">
-                <input type="text" placeholder=" " id="yname">
-                <span class="sp">Your email</span>
-            </article>
+            <form action="">
+                <article class="ph">
+                    <input type="text" placeholder=" " id="yname">
+                    <span class="sp">Your email</span>
+                </article>
+                    <br>
+                <article class="ph">
+                    <input type="password" placeholder=" ">
+                    <span class="sp">Your password</span>
+                </article>
                 <br>
-            <article class="ph">
-                <input type="password" placeholder=" ">
-                <span class="sp">Your password</span>
-            </article>
-            <br>
-            <article id="art1">
-                <a href="#">Forgot Password?</a>
-            </article>
-            <br><br><br>
+                <article id="art1">
+                    <a href="#">Forgot Password?</a>
+                </article>
+                <br><br><br>
 
-            <a href="#" id="signin">Sign in</a>
-            <a href="sign_up.html" id="signup"><b>or SIGN UP</b></a>
+                <!-- <a href="#" id="signin">Sign in</a> -->
+                <button type="submit" id="signin">Sign in</button>
+                <a href="sign_up.html" id="signup"><b>or SIGN UP</b></a>
+            </form>
 
             <article id="art2">
                 <p>Contact Us:</p>
