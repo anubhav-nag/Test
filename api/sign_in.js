@@ -1,4 +1,5 @@
 const express = require('express');
+const bcrypt = require('bcrypt');
 
 const router = express.Router();
 
@@ -11,9 +12,13 @@ router.get('/',(req,res) => {
 router.post('/',(req,res) => {
     const user = req.body;
     User.findByemail(user['name']).then(authUser => {
-        if (authUser && authUser['password'] == user['password']) {
-            console.log(authUser);
-            res.status(200).redirect('/');
+        if (authUser) {
+            bcrypt.compare(user['password'], authUser['password'], function(err, result) {
+                if (result == true){
+                    console.log(authUser);
+                    res.status(200).redirect('/')
+                }
+            });
         }
         else{
             console.log("either usename or password is wrong");
