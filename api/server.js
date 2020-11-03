@@ -28,6 +28,13 @@ server.get('/trifle', (req, res) => {
     res.status(200).json({message:"its working"})
 });
 
+//flash messages
+// server.use(require('connect-flash')());
+// server.use(function (req, res, next) {
+//   res.locals.messages = require('express-messages')(req, res);
+//   next();
+// });
+
 
 //routes for pages
 server.use('/',require('./home')); // ./home ==> home.js
