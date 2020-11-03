@@ -1,7 +1,9 @@
 const { json } = require('body-parser');
 const express = require('express');
-
+const bcrypt = require('bcrypt');
 const router = express.Router();
+
+const saltRounds = 10;
 
 const Users = require('../models/dbHelper');
 
@@ -11,13 +13,41 @@ router.get('/',(req,res) => {
 
 router.post('/',(req,res) => {
     const newUser = req.body;
-    Users.add(newUser).then(user => {
-        console.log(newUser);
-        res.status(200).redirect('/signin');
+    Users.findByemail(newUser['email']).then(user => {
+        if(user){
+            res.status(200).redirect('/signup');
+        }
+        else{
+            bcrypt.genSalt(saltRounds, function(err, salt) {
+                bcrypt.hash(newUser['password'], salt, function(err, hash) {
+                    newUser['password'] = hash;
+        
+                    Users.add(newUser).then(user => {
+                        console.log(newUser);
+                        res.status(200).redirect('/signin');
+                    })
+                    .catch(error => {
+                        res.status(404).send("Something went wrong!!");
+                    })
+                    
+                });
+            });
+        }
     })
     .catch(error => {
-        res.status(404).send("Something went wrong!!");
+        res.status(500).send('some error');
     })
+    
 });
 
 module.exports = router; 
+
+
+
+// Users.add(newUser).then(user => {
+//     console.log(newUser);
+//     res.status(200).redirect('/signin');
+// })
+// .catch(error => {
+//     res.status(404).send("Something went wrong!!");
+// })
