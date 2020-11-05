@@ -92,7 +92,7 @@ server.get('/logout',redirectlogin, (req,res) => {
       }
 
       res.clearCookie(SESS_NAME);
-      res.redirect('/');
+      return res.redirect('/');
   });
 })
 

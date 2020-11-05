@@ -81,7 +81,9 @@
 	          <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
 	          <li class="nav-item dropdown">
               <!-- <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a> -->
+        {% if user %}    
 			  <li class="nav-item"><a href="/shop" class="nav-link">Shop</a></li>
+        {% endif %}
 			  <!-- <div class="dropdown-menu" aria-labelledby="dropdown04">
               	<a class="dropdown-item" href="shop.html">Shop</a>
               	<a class="dropdown-item" href="wishlist.html">Wishlist</a>
@@ -93,7 +95,9 @@
 	          <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
 	          <!-- <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li> -->
 	          <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
+            {% if user %}
 	          <li class="nav-item cta cta-colored" id="cart"><a href="/cart" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+            {% endif %}
 
 	        </ul>
 	      </div>

@@ -2,6 +2,9 @@ const express = require('express');
 
 const router = express.Router();
 
+const User = require('../models/dbHelper');
+
+
 const redirectlogin = (req,res,next) => {
     if (!req.session.userId) {
         res.redirect('/signin');
@@ -12,7 +15,17 @@ const redirectlogin = (req,res,next) => {
 }
 
 router.get('/',redirectlogin,(req,res) => {
-    res.status(200).render('cart.html');
+    const id = req.session.userId;
+
+    User.findByid(id).then(authUser => {
+        const user = {id : authUser.id, name : authUser.first_name + authUser.last_name, email : authUser.email};
+        res.status(200).render('cart.html',{user});
+    })
+    .catch(error => {
+        res.status(500).send('something get wrong');
+    })
+    
+    
 })
 
 module.exports = router;

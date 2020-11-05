@@ -2,8 +2,28 @@ const express = require('express');
 
 const router = express.Router();
 
+const User = require('../models/dbHelper');
+
 router.get('/',(req,res) => {
-    res.status(200).render('try.html');
+    try {
+        const id = req.session.userId;
+        if (id) {
+            console.log(`*** ${id} *** home`);
+            User.findByid(id).then(authUser => {
+                const user = { id: authUser.id, name: authUser.first_name + authUser.last_name, email: authUser.email }
+                res.status(200).render('try.html', { user });
+            })
+        }
+        else {
+            console.log('no session');
+            res.status(200).render('try.html');
+        }
+    }
+    catch(err){
+        console.error(err);
+        res.send('some wrong')
+    }
+   
 })
 
 module.exports = router;
