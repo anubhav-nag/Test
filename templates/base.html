@@ -54,9 +54,15 @@
 						</div>
 						
 						<div>
-							<a href="/signin"><span class="sign">Sign-in</span></a>
+            {% if user %}
+              <a href="/logout"><span class="sign">Logout</span></a>
+						
+            {% else %}
+              <a href="/signin"><span class="sign">Sign-in</span></a>
 							&nbsp <span style="color: black;">or</span> 
-							<a href="/signup"><span class="sign">Register</span></a>							
+							<a href="/signup"><span class="sign">Register</span></a>
+            {% endif %}
+														
 						</div>
 					</div>
 			    </div>

@@ -5,7 +5,16 @@ const router = express.Router();
 
 const User = require('../models/dbHelper');
 
-router.get('/',(req,res) => {
+const redirecthome = (req,res,next) => {
+    if (req.session.userId) {
+        res.redirect('/shop');
+    }
+    else{
+        next();
+    }
+}
+
+router.get('/',redirecthome,(req,res) => {
     res.status(200).render('sign_in.html');
 });
 
@@ -15,8 +24,12 @@ router.post('/',(req,res) => {
         if (authUser) {
             bcrypt.compare(user['password'], authUser['password'], function(err, result) {
                 if (result == true){
+                    req.session.userId = authUser.id;
+                    return res.status(200).redirect('/shop');
+                }
+                else{
                     console.log(authUser);
-                    res.status(200).redirect('/')
+                    res.status(404).redirect('/signin');
                 }
             });
         }

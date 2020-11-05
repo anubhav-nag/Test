@@ -5,7 +5,12 @@ const router = express.Router();
 
 const saltRounds = 10;
 
+
+
 const Users = require('../models/dbHelper');
+
+
+
 
 router.get('/',(req,res) => {
     res.status(200).render('sign_up.html');
