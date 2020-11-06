@@ -18,7 +18,7 @@ router.get('/',redirecthome,(req,res) => {
     res.status(200).render('sign_in.html');
 });
 
-router.post('/',(req,res) => {
+router.post('/',redirecthome,(req,res) => {
     const user = req.body;
     User.findByemail(user['name']).then(authUser => {
         if (authUser) {

@@ -1,10 +1,12 @@
 const express = require('express');
 const path = require('path');
-const server = express();
+
 const bodyParser = require('body-parser');
 const nunjucks = require('nunjucks');
 const session = require('express-session');
+const flash = require('connect-flash');
 
+const server = express();
 
 const TWO_HOURS = 1000 * 60 * 60 * 60 * 2
 
@@ -54,6 +56,7 @@ server.use(session({
   }
 }))
 
+//remove cache of browser
 server.use(function(req, res, next) {
   res.set('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
   next();
@@ -61,12 +64,9 @@ server.use(function(req, res, next) {
 
 
 
-//flash messages
-// server.use(require('connect-flash')());
-// server.use(function (req, res, next) {
-//   res.locals.messages = require('express-messages')(req, res);
-//   next();
-// });
+// flash messages
+
+
 
 
 const redirectlogin = (req,res,next) => {
