@@ -23,6 +23,7 @@ router.get('/',redirecthome,(req,res) => {
     res.status(200).render('sign_up.html');
 });
 
+
 router.post('/',redirecthome,(req,res) => {
     const newUser = req.body;
     Users.findByemail(newUser['email']).then(user => {

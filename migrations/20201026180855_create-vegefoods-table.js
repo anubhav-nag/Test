@@ -8,6 +8,12 @@ exports.up = function (knex) {
         table.string('password').notNullable();
         table.timestamps(true, true);
     })
+    .createTable('vegetable', table => {
+        table.increments('product_id').primary();
+        table.string('product_name').notNullable();
+        table.integer('product_price').notNullable();
+        table.string('product_image').notNullable();
+    })
 
 };
 

@@ -18,7 +18,8 @@ router.get('/',redirectlogin,(req,res) => {
     const id = req.session.userId;
 
     User.findByid(id).then(authUser => {
-        const user = {id : authUser.id, name : authUser.first_name + authUser.last_name, email : authUser.email};
+        const user = {id : authUser.id, name : authUser.first_name +' '+ authUser.last_name, email : authUser.email};
+        console.log(user['name']);
         res.status(200).render('cart.html',{user});
     })
     .catch(error => {

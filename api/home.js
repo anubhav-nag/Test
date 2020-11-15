@@ -11,12 +11,19 @@ router.get('/',(req,res) => {
             console.log(`*** ${id} *** home`);
             User.findByid(id).then(authUser => {
                 const user = { id: authUser.id, name: authUser.first_name + authUser.last_name, email: authUser.email }
-                res.status(200).render('try.html', { user });
+                res.status(200).render('try.html', { user : user });
             })
         }
         else {
-            console.log('no session');
-            res.status(200).render('try.html');
+            console.log('no session home');
+            User.getallveges().then(veges => {
+                console.log(veges[0]);
+                res.status(200).render('try.html',{veges : veges});
+            })
+            .catch(err => {
+                console.log('some error');
+            })
+            
         }
     }
     catch(err){

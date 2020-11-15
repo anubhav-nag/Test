@@ -6,6 +6,8 @@ const nunjucks = require('nunjucks');
 const session = require('express-session');
 const flash = require('connect-flash');
 
+const User = require('../models/dbHelper');
+
 const server = express();
 
 const TWO_HOURS = 1000 * 60 * 60 * 60 * 2
@@ -88,6 +90,20 @@ server.use('/cart',require('./cart'));
 server.use('/signin',require('./sign_in'));
 server.use('/signup',require('./sign_up'));
 
+server.get('/addveges',(req,res) => {
+  return res.render('index2.html');
+})
+
+server.post('/addveges',(req,res) => {
+  const data = req.body;
+  User.addveges(data).then(vege => {
+    console.log(vege);
+  })
+  .catch(err => {
+    console.log('some wrong')
+  })
+  res.redirect('/addveges');
+})
 
 
 server.get('/logout',redirectlogin, (req,res) => {
@@ -95,7 +111,7 @@ server.get('/logout',redirectlogin, (req,res) => {
       if(err) {
           return res.redirect('/shop');
       }
-
+      
       res.clearCookie(SESS_NAME);
       return res.redirect('/');
   });
