@@ -14,9 +14,15 @@ exports.up = function (knex) {
         table.integer('product_price').notNullable();
         table.string('product_image').notNullable();
     })
+    .createTable('fruits', table => {
+        table.increments('product_id').primary();
+        table.string('product_name').notNullable();
+        table.integer('product_price').notNullable();
+        table.string('product_image').notNullable();
+    })
 
 };
 
 exports.down = function (knex) {
-    return knex.schema.dropTableIfExists('users');
+    return knex.schema.dropTableIfExists('users').dropTableIfExists('vegetable').dropTableIfExists('fruits');
 };
