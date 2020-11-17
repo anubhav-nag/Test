@@ -16,9 +16,9 @@ router.get('/',(req,res) => {
         }
         else {
             console.log('no session home');
-            User.getallveges().then(veges => {
-                console.log(veges[0]);
-                res.status(200).render('try.html',{veges : veges});
+            User.getallitems().then(items => {
+                console.log(items[0]);
+                res.status(200).render('try.html',{items : items});
             })
             .catch(err => {
                 console.log('some error');

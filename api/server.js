@@ -90,19 +90,19 @@ server.use('/cart',require('./cart'));
 server.use('/signin',require('./sign_in'));
 server.use('/signup',require('./sign_up'));
 
-server.get('/addveges',(req,res) => {
+server.get('/additems',(req,res) => {
   return res.render('index2.html');
 })
 
-server.post('/addveges',(req,res) => {
+server.post('/additems',(req,res) => {
   const data = req.body;
-  User.addveges(data).then(vege => {
-    console.log(vege);
+  User.additems(data).then(item => {
+    console.log(item);
   })
   .catch(err => {
     console.log('some wrong')
   })
-  res.redirect('/addveges');
+  res.redirect('/additems');
 })
 
 

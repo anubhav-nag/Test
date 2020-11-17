@@ -4,8 +4,8 @@ module.exports = {
     add,
     findByemail,
     findByid,
-    addveges,
-    getallveges
+    additems,
+    getallitems
 }
 
 
@@ -15,14 +15,14 @@ async function add(lesson) {
     // return id;
 }
 
-async function addveges(veges) {
-    return await db('vegetable').insert(veges, ['product_name']);
+async function additems(items) {
+    return await db('items').insert(items, ['product_name']);
     // const [id] = await db('lessons').insert(lesson);
     // return id;
 }
 
-function getallveges(){
-    return db('vegetable');
+function getallitems(){
+    return db('items');
 }
 
 function findByemail(email) {
