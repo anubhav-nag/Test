@@ -8,6 +8,7 @@ function add_to_cart(pid,pname,price)
         let product = { productId:pid, productName:pname , productQuantity:1 , productPrice:price }
         products.push(product);
         localStorage.setItem("cart",JSON.stringify(products));
+        console.log("Product is added for the first time");
     }
     else
     {
@@ -26,6 +27,7 @@ function add_to_cart(pid,pname,price)
                 }
             })
             localStorage.setItem("cart",JSON.stringify(pcart));
+            console.log("Product quantity is increased");
         }
         else
         {
@@ -33,6 +35,7 @@ function add_to_cart(pid,pname,price)
             let product = { productId:pid, productName:pname , productQuantity:1 , productPrice:price }
             pcart.push(product);
             localStorage.setItem("cart",JSON.stringify(pcart));
+            console.log("Product is added");
         }
     }
 }
