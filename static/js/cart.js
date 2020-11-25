@@ -39,3 +39,50 @@ function add_to_cart(pid,pname,price)
         }
     }
 }
+
+function update_cart()
+{
+    let cartString = localStorage.getItem("cart");
+    let cart = JSON.parse(cartString);
+
+    if(cart == null || cart.length ==0)
+    {
+        console.log("Cart is Empty!!");
+        $(".cart-items").html("[0]");
+        $(".cart-body").html("<h3>Cart does not have any items </h3>");
+        $(".checkout-btn").addClass('disabled');
+    }
+    else
+    {
+        $(".cart-items").html(`(${cart.length})`);
+        let table = `
+            <table class='table'>
+            <thead class='thead-light'>
+                <tr>
+                    <th>Item Name </th>
+                    <th>Price </th>
+                    <th>Quantity </th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+        `;
+        cart.map((item) =>{
+            table +=`
+                <tr>
+                    <td> ${item.productName} </td>
+                    <td> ${item.productPrice} </td>
+                    <td> ${item.productQuantity} </td>
+                    <td> ${item.productQuantity * item.productPrice} </td>
+                    <td> <button class='btn btn-danger btn-sm'> Remove </button></td>    
+                </tr>
+            `
+        })
+        table = table + `</table>`;
+        $(".cart-body").html(table);
+    }
+}
+
+$(document).ready(function (){
+    update_cart
+})
