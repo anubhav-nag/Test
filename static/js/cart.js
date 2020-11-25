@@ -102,4 +102,3 @@ function remove_from_cart(pid)
 $(document).ready(function (){
     update_cart
 })
-
