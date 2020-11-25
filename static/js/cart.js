@@ -67,6 +67,8 @@ function update_cart()
                 </tr>
             </thead>
         `;
+        let totalPrice =0;
+
         cart.map((item) =>{
             table +=`
                 <tr>
@@ -77,8 +79,14 @@ function update_cart()
                     <td> <button class='btn btn-danger btn-sm'> Remove </button></td>    
                 </tr>
             `
+
+            totalPrice+=item.productPrice*item.productQuantity;
         })
-        table = table + `</table>`;
+
+
+        table = table + `
+            <tr><td colspan ='5' class='text-right font-weight-bold'> Total Price : ${totalPrice} </td></tr>
+        </table>`;
         $(".cart-body").html(table);
     }
 }
