@@ -14,11 +14,18 @@ function add_to_cart(pid,pname,price)
         //cart is already present and not empty
         let pcart = JSON.parse(cart);
         
-        let oldproduct = pcart.find((item) => item.productId == pid);
-        if(oldproduct)
+        let oldProduct = pcart.find((item) => item.productId == pid);
+        if(oldProduct)
         {
             //if item is already present
-            
+            oldProduct.productQuantity = oldProduct.productQuantity + 1;
+            pcart.map((item) =>{
+                if (item.productId == oldProduct.productId)
+                {
+                    item.productQuantity = oldProduct.productQuantity;    
+                }
+            })
+            localStorage.setItem("cart",JSON.stringify(pcart));
         }
         else
         {
