@@ -76,7 +76,7 @@ function update_cart()
                     <td> ${item.productPrice} </td>
                     <td> ${item.productQuantity} </td>
                     <td> ${item.productQuantity * item.productPrice} </td>
-                    <td> <button class='btn btn-danger btn-sm'> Remove </button></td>    
+                    <td> <button onclick='remove_from_cart(${item.productId})' class='btn btn-danger btn-sm'> Remove </button></td>    
                 </tr>
             `
 
@@ -91,6 +91,15 @@ function update_cart()
     }
 }
 
+function remove_from_cart(pid)
+{
+    let cart = JSON.parse(localStorage.getItem('cart'));
+
+    let newcart = cart.filter((item)=> item.productId != pid);
+    localStorage.setItem('cart',JSON.stringify(newcart));
+}
+
 $(document).ready(function (){
     update_cart
 })
+
